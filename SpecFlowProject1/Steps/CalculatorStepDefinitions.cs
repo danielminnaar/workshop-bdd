@@ -11,23 +11,47 @@ namespace SpecFlowProject1.Steps
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
         private readonly ScenarioContext _scenarioContext;
-        private int _result;
+        private decimal _wrongQuantity;
+        private int _quantity;
+        private decimal _price;
 
         public CalculatorStepDefinitions(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
         }
 
-        [Given(@"the project is setup")]
-        public void GivenTheProjectIsSetup()
+        [Given(@"the quantity is (.*)")]
+        public void GivenTheQuantityIs(string p0)
         {
-            _result = RetailCalculator.TotalAmount();
+            var success = int.TryParse(p0, out _quantity);
+            if (!success)
+                decimal.TryParse(p0, out _wrongQuantity);
         }
 
-        [Then(@"the test will pass")]
-        public void ThenTheTestWillPass()
+        [Given(@"the price is (.*)")]
+        public void GivenThePriceIs(decimal p0)
         {
-            Assert.Equal(0, _result);
+            _price = p0;
+        }
+
+        [Then(@"the total amount will be (.*)")]
+        public void ThenTheTotalAmountWillBe(decimal p0)
+        {
+            Assert.Equal(p0, RetailCalculator.TotalAmount(_quantity, _price));
+        }
+
+        [Then(@"the total amount will be error")]
+        public void ThenTheTotalAmountWillBeError()
+        {
+            try
+            {
+                RetailCalculator.TotalAmount((int)_wrongQuantity, _price);
+                Assert.True(false);
+            }
+            catch
+            {
+                Assert.True(true);
+            }
         }
 
     }

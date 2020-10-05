@@ -6,9 +6,9 @@ namespace Calculator
 {
     public static class RetailCalculator
     {
-        public static int TotalAmount()
+        public static decimal TotalAmount(int quantity, decimal price)
         {
-            return 0;
+            return quantity * price;
         }
     }
 }

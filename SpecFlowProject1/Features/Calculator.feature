@@ -1,9 +1,5 @@
 ﻿Feature: Calculator
 
-Scenario: Setup story
-Given the project is setup
-Then the test will pass
-
 Scenario: The quantity will be 10 and price 2
 Given the quantity is 10
 And the price is 2
