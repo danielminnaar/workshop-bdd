@@ -53,6 +53,11 @@ namespace SpecFlowProject1.Steps
                 Assert.True(true);
             }
         }
+        [Given(@"the country code is '(.*)'")]
+        public void GivenTheCountryCodeIs(string p0)
+        {
+            ScenarioContext.Current.Pending();
+        }
 
     }
 }
