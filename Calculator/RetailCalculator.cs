@@ -6,9 +6,15 @@ namespace Calculator
 {
     public static class RetailCalculator
     {
-        public static decimal TotalAmount(int quantity, decimal price)
+        public static double TotalAmount(int quantity, double price, string countryCode)
         {
-            return quantity * price;
+            double taxRate = 0;
+            if(countryCode == "DE")
+            {
+                taxRate = 0.0625;
+            }
+            var addedTax = (quantity * price) * taxRate;
+            return (quantity * price) + addedTax;
         }
     }
 }

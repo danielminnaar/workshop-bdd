@@ -11,8 +11,10 @@ namespace Calculator
             var quantity = int.Parse(text);
             Console.WriteLine("Please enter price");
             text = Console.ReadLine();
-            var price = decimal.Parse(text);
-            var result = RetailCalculator.TotalAmount(quantity, price);
+            var price = double.Parse(text);
+            Console.WriteLine("Please enter country code");
+            var code = Console.ReadLine();
+            var result = RetailCalculator.TotalAmount(quantity, price, code);
             Console.WriteLine($"Order Total = {result}");
         }
     }

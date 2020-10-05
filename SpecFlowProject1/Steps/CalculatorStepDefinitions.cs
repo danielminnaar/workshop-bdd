@@ -13,7 +13,8 @@ namespace SpecFlowProject1.Steps
         private readonly ScenarioContext _scenarioContext;
         private decimal _wrongQuantity;
         private int _quantity;
-        private decimal _price;
+        private double _price;
+        private string _countryCode;
 
         public CalculatorStepDefinitions(ScenarioContext scenarioContext)
         {
@@ -29,15 +30,15 @@ namespace SpecFlowProject1.Steps
         }
 
         [Given(@"the price is (.*)")]
-        public void GivenThePriceIs(decimal p0)
+        public void GivenThePriceIs(double p0)
         {
             _price = p0;
         }
 
         [Then(@"the total amount will be (.*)")]
-        public void ThenTheTotalAmountWillBe(decimal p0)
+        public void ThenTheTotalAmountWillBe(double p0)
         {
-            Assert.Equal(p0, RetailCalculator.TotalAmount(_quantity, _price));
+            Assert.Equal(p0, RetailCalculator.TotalAmount(_quantity, _price, _countryCode));
         }
 
         [Then(@"the total amount will be error")]
@@ -45,7 +46,7 @@ namespace SpecFlowProject1.Steps
         {
             try
             {
-                RetailCalculator.TotalAmount((int)_wrongQuantity, _price);
+                RetailCalculator.TotalAmount((int)_wrongQuantity, _price, _countryCode);
                 Assert.True(false);
             }
             catch
@@ -56,7 +57,7 @@ namespace SpecFlowProject1.Steps
         [Given(@"the country code is '(.*)'")]
         public void GivenTheCountryCodeIs(string p0)
         {
-            ScenarioContext.Current.Pending();
+            _countryCode = p0;
         }
 
     }
