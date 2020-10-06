@@ -69,3 +69,9 @@ Given the quantity is 100
 And the price is 1
 And the country code is 'No'
 Then the total amount will be 108.25
+
+Scenario: Discount of 3% when order value is '1000'
+Given the quantity is 1000
+And the price is 1
+And the country code is 'NO'
+Then the total amount will be 1050.025
