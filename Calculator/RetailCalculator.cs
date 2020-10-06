@@ -13,6 +13,9 @@ namespace Calculator
             if(normalizedCountryCode == "DE")
             {
                 taxRate = 0.0625;
+            } else if (normalizedCountryCode == "DK")
+            {
+                taxRate = 0.04;
             }
             var addedTax = (quantity * price) * taxRate;
             return (quantity * price) + addedTax;
