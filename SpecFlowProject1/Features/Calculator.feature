@@ -33,3 +33,21 @@ Given the quantity is 100
 And the price is 1
 And the country code is 'De'
 Then the total amount will be 106.25
+
+Scenario: Country code is 'DK'
+Given the quantity is 100
+And the price is 1
+And the country code is 'DK'
+Then the total amount will be 104
+
+Scenario: Added country code 'dk'
+Given the quantity is 100 
+And the price is 1
+And the country code is 'dk'
+Then the total amount will be 104
+
+Scenario: Added country code with 'Dk'
+Given the quantity is 100
+And the price is 1
+And the country code is 'Dk'
+Then the total amount will be 104
