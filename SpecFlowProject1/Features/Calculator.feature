@@ -51,3 +51,21 @@ Given the quantity is 100
 And the price is 1
 And the country code is 'Dk'
 Then the total amount will be 104
+
+Scenario: Country code is 'NO'
+Given the quantity is 100
+And the price is 1
+And the country code is 'NO'
+Then the total amount will be 108.25
+
+Scenario: Added country code is 'no'
+Given the quantity is 100
+And the price is 1
+And the country code is 'no'
+Then the total amount will be 108.25
+
+Scenario: Added country code with 'No'
+Given the quantity is 100
+And the price is 1
+And the country code is 'No'
+Then the total amount will be 108.25
