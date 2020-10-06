@@ -22,7 +22,16 @@ namespace Calculator
                 taxRate = 0.0825;
             }
             var addedTax = (quantity * price) * taxRate;
-            return (quantity * price) + addedTax;
+            var totalAmount = (quantity * price) + addedTax;
+            return ApplyDiscount(totalAmount);
+        }
+
+        private static double ApplyDiscount(double amount)
+        {
+            if (amount >= 1000 && amount < 5000)
+                return amount - (amount * 0.03);
+
+            return amount;
         }
     }
 }
